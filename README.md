@@ -11,6 +11,7 @@ VOID's vim configuration QWQ
 > vimproc       --- VimShell Dependencies
 > vimshell      --- Using shell in vim
 > YCM-Generator --- Ycm auxiliary, show you an easy-to-use YCM
+> auto-pairs    --- Insert or delete brackets, parens, quotes in pair
 ```
 
 ###How-to-Guide
