@@ -16,7 +16,12 @@ Plugin 'Valloric/YouCompleteMe' "Code-AutoComplete Plugin
 Plugin 'Shougo/vimproc' " Vimshell dependencies
 Plugin 'Shougo/vimshell.vim' "Using shell in vim
 Plugin 'rdnetto/YCM-Generator' "Using for generate .ycm_extra_config.py
+Plugin 'rdnetto/YCM-Generator' "Using for generate .ycm_extra_config.py
+Plugin 'jiangmiao/auto-pairs' "Insert or delete brackets, parens, quotes in pair
 call vundle#end()
+"auto-pairs Configurations
+let g:AutoPairs = { '{':'}' }
+let g:AutoPairsMultilineClose = 0
 "Airline Configurations
 set noshowmode
 set encoding=utf8
