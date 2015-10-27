@@ -62,7 +62,7 @@ set fileencoding=utf-8
 "======================================PLUGIN KEYMAP CONFIGURATION================================================
 "map <leader>n :NERDTreeToggle<CR>
 noremap <leader><leader> :NERDTreeToggle<CR>
-noremap <C-]> <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
+noremap <C-]>] <Esc>:YcmCompleter GoToDefinitionElseDeclaration<CR>
 map <C-n> <Esc>:tabnew<CR>
 map <C-x> <Esc>:tabclose<CR>
 map <C-l> <Esc>gt
