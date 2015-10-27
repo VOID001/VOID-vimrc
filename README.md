@@ -18,6 +18,9 @@ VOID's vim configuration QWQ
 * First change to your .vim directory and make a dir named 'bundle'
 * Then exec this command `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 * Then put replace your .vimrc file with the .vimrc file in my repo ~ 
+* Then open a new vim editor and enter `:PluginInstall` __make sure you have network connection enabled__
+* After this all the plugins except Ycm should work well 
+* Then if you want to enable Ycm just put a .ycm_extra_conf.py in your current directory , or in any father directory, Here is a .ycm_extra_conf.py for C++ use (in this repo)
 * And feel free to hack on it ~ !
 
 
