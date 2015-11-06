@@ -229,6 +229,55 @@ autocmd BufNewFile * normal G
 ""键盘命令
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
+"compile
+nmap<C-F9>  :call Compile()<CR>
+"compile and run
+nmap<F9>    :call CompileRun()<CR>
+
+func! Compile()
+	if &filetype=='c'
+		set makeprg=gcc\ %\ -o\ %:r
+	elseif &filetype=='cpp'
+		set makeprg=g++\ -std=c++11\ %\ -o\ %:r
+	elseif &filetype=='java'
+		set makeprg=javac\ %
+	else
+		echo 'Filetype Unsupported'
+		return 0
+	endif
+	silent exec 'w | make | redraw! | abo cw 6'
+	if !empty(getqflist())
+		exec 'cc'
+	else
+		echo 'OK'
+	endif
+	stopinsert
+	return empty(getqflist())
+endfunc
+
+func! Run()
+	silent exec "ccl | w"
+	if &filetype=='c' || &filetype=='cpp'
+		let cmd = "./" . expand("%:r")
+	elseif &filetype=='java'
+		let cmd = "java -classpath ".expand("%:h")." ".expand("%:t:r")
+	elseif &filetype=='python'
+		let cmd = "python " . expand("%")
+	elseif &filetype=='ruby'
+		let cmd = "ruby " . expand("%")
+	else
+		echo 'Filetype Unsupported'
+		return
+	endif
+	exec "!" . cmd
+endfunc
+
+func! CompileRun()
+	if Compile()
+		call Run()
+	endif
+endfunc
+
 "nmap <leader>w :w!<cr>
 "nmap <leader>f :find<cr>
 "

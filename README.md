@@ -31,6 +31,8 @@ VOID's vim configuration QWQ
 * C-n for a new tab
 * C-l for moving to the right tab
 * C-h for moving to the left tab
+* C-F9 for compiling, currently support C, C++ and Java.
+* F9 for compiling and running, currently support C, C++, Java, Python and Ruby.
 * If you are in a project root directory , use :YcmGenerator to generate the autocomplete and syntax checking confiugration file for your project =O=
 > If you want to enable the plugin vimshell, You might need to build it first. See the help message for more details
 
