@@ -16,7 +16,7 @@ VOID's vim & nvim configuration QWQ
 > auto-pairs    --- Insert or delete brackets, parens, quotes in pair
 ```
 
-###How-to-Guide
+### How-to-Guide
 
 * First change to your .vim directory and make a dir named 'bundle'
 * Then exec this command `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
@@ -64,7 +64,7 @@ neovim has native terminal support. Neovim plugin can be written in ruby, lua, p
 > vim-go        --- Golang vim plugin
 ```
 
-###How-to-Guide
+### How-to-Guide
 
 * Install [vim-plug](https://github.com/junegunn/vim-plug) first.
 * Then replace your ~/.config/nvim/init.vim file with the init.vim file in my repo ~ 
