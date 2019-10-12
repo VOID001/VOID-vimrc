@@ -18,10 +18,16 @@ VOID's vim & nvim configuration QWQ
 
 ### How-to-Guide
 
-* First change to your .vim directory and make a dir named 'bundle'
-* Then exec this command `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-* Then put replace your .vimrc file with the .vimrc file in my repo ~ 
-* Then open a new vim editor and enter `:PluginInstall` __make sure you have network connection enabled__
+* First change to your .vim directory and make a dir named 'autoload'
+* Then exec this command 
+
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+* Then put replace your .vimrc file with the vimrc file in my repo ~ 
+* Put all other `*.vim` file in ~/.vim/
+* Then open a new vim editor and enter `:PlugInstall` __make sure you have network connection enabled__
 * After this all the plugins except Ycm should work well 
 * YCM should be compiled first, to compile YCM, just cd to `~/.vim/bundle/YouCompleteMe/` then run `/path/to/your/python2 install.py --clang-completer` 
 * Then if you want to enable Ycm just put a .ycm_extra_conf.py in your current directory , or in any father directory, Here is a .ycm_extra_conf.py for C++ use (in this repo)
