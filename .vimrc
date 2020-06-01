@@ -1,57 +1,74 @@
-"======================================PLUGIN CONFIGURATION================================================
+" VOID001's Custom Vim Configuration File
+" = BEGIN GPLv3 =
+" Copyright (C) 2017-2020  Jianqiu Zhang
 "
-" Set Up Vundle
-runtime! .vim
-set nocompatible 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+" This program is free software: you can redistribute it and/or modify
+" it under the terms of the GNU General Public License as published by
+" the Free Software Foundation, either version 3 of the License, or
+" (at your option) any later version.
+"
+" This program is distributed in the hope that it will be useful,
+" but WITHOUT ANY WARRANTY; without even the implied warranty of
+" MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+" GNU General Public License for more details.
+"
+" You should have received a copy of the GNU General Public License
+" along with this program.  If not, see <https://www.gnu.org/licenses/>.
+" = END GPLv3 =
+
 filetype plugin indent on
 
 call plug#begin('~/.vim/bundle')
-" Plug 'scrooloose/syntastic' "Syntax Plugin enabled
 Plug 'vim/killersheep'
 Plug 'scrooloose/nerdtree' "File Tree Support
-" Plug 'tpope/vim-fugitive' "Git plugin
-" Plug 'Valloric/YouCompleteMe', {'for': ['golang', 'go', 'python'], 'do': 'python ./install.py --all'} "Code-AutoComplete Plugin
 " Plug 'Shougo/vimproc' " Vimshell dependencies
-" Plug 'rdnetto/YCM-Generator' "Using for generate .ycm_extra_config.py
 Plug 'jiangmiao/auto-pairs' "Insert or delete brackets, parens, quotes in pair
 Plug 'vim-scripts/taglist.vim' "tag viewer
-" Plug 'shawncplus/phpcomplete.vim', {'for': 'php'}     "php omnicompletion
-" Plug 'junegunn/goyo.vim'          "Zen mode Edit Plugin
-" Plug 'godoctor/godoctor.vim'      "go doctor refactor
 Plug 'fatih/vim-go'
 ", {'for': ['golang', 'go']}
 " Plug 'wikitopian/hardmode'
-" Plug 'wakatime/vim-wakatime'
 Plug 'Shougo/denite.nvim'
-" Plug 'jceb/vim-orgmode'
 Plug 'Firef0x/PKGBUILD.vim'
-" Plug 'vim-latex/vim-latex'
 Plug 'vim-scripts/gtags.vim' , {'for': ['c', 'cpp']}
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-" Plug 'vim-scripts/bad-apple'
 Plug 'w0rp/ale', {'for': ['c', 'cpp', 'rust', 'python', 'go']}
-
 Plug 'rust-lang/rust.vim' , {'for': ['rust']}
-" Plug 'racer-rust/vim-racer', {'for': ['rust']}
-
-" Autocomplete deoplete
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim', {'for': ['cpp'] }
-"   Plug 'roxma/nvim-yarp', {'for': ['cpp'] }
-"   Plug 'roxma/vim-hug-neovim-rpc', {'for': ['cpp'] }
-" endif
 
 Plug 'python-mode/python-mode', {'for': 'python'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'VOID001/graph-easy-vim'
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 
-"Plug 'johngrib/vim-game-code-break'
 call plug#end()
+
+" ===============  v1.0 Configurations ======================
+set nocompatible " Remove all vi compatible features to have a better experience
+set wildmenu " Use enhanced <Tab> menu when completing the commands in vim command buffer
+set rnu
+autocmd InsertEnter * :set nu
+autocmd InsertLeave * :set rnu
+syntax on
+set incsearch "Use increment search
+set hlsearch "Use highlight search
+set autoread "Autoread file when modified
+" Set the indentation styles editor-wide
+set tabstop=4 
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set backspace=2
+set mouse=a	"Enable Mouse
+
+"Set encoding
+set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+set fileencodings=ucs-bom,utf-8,cp936
+set fileencoding=utf-8
+set nobackup            "Do not create .swp file for each file opened
+set noswapfile          "Do not create swp file TODO: Create swap file but change the name
+set expandtab
 
 "auto-pairs Configurations
 let g:AutoPairs = { '{':'}' }
@@ -60,9 +77,6 @@ let g:AutoPairsMultilineClose = 0
 "Airline Configurations
 set noshowmode
 set encoding=utf8
-
-" Deoplete Enable
-" let g:deoplete#enable_at_startup = 1
 
 "set fillchars+=stl:\ ,stlnc:\
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
@@ -74,16 +88,6 @@ let g:airline#extensions#whitespace#enabled=1
 let g:ycm_show_diagnostics_ui = 1
 syntax on
 set showcmd
-
-"YouCompleteme Configurations
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_collect_identifiers_from_tag_files = 1
-let g:ycm_confirm_extra_conf = 0
-
-" let g:ycm_gocode_binary_path="$GOPATH/bin/gocode"
-" let g:ycm_godef_binary_path="$GOPATH/bin/godef"
-let g:ycm_gocode_binary_path="/home/void001/GOPATH/bin/gocode"
-let g:ycm_godef_binary_path="/home/void001/GOPATH/bin/godef"
 
 "taglist Configuration
 let Tlist_Sort_Type = "name"    " 按照名称排序  
@@ -107,43 +111,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 "Syntastic Configuration
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_go_checkers = ['go', 'golint', 'gofmt']
 let g:syntastic_quiet_messages = {"level": "warnings" }
-
-"
-"======================================BASIC CONFIGURATION================================================
-set rnu
-autocmd InsertEnter * :set nu
-autocmd InsertLeave * :set rnu
-syntax on
-set incsearch "Use increment search
-set hlsearch "Use highlight search
-set autoread "Autoread file when modified
-set tabstop=4 
-set softtabstop=4
-set shiftwidth=4
-set autoindent
-set smartindent
-set backspace=2
-set mouse=a	"Enable Mouse
-
-"Set encoding
-set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
-set termencoding=utf-8
-set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,cp936
-set fileencoding=utf-8
-set nobackup            "Do not create .swp file for each file opened
-set noswapfile          "Do not create swp file
-set expandtab
 
 "======================================PLUGIN KEYMAP CONFIGURATION================================================
 "map <leader>n :NERDTreeToggle<CR>
@@ -155,71 +128,6 @@ map <C-l> <Esc>gt
 map <C-h> <Esc>gT
 map <F8> <Esc>:TlistToggle<CR>
 
-"" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
-"" the call to :runtime you can find below.  If you wish to change any of those
-"" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
-"" will be overwritten everytime an upgrade of the vim packages is performed.
-"" It is recommended to make changes after sourcing debian.vim since it alters
-"" the value of the 'compatible' option.
-"
-"" This line should not be removed as it ensures that various options are
-"" properly set to work with the Vim-related packages available in Debian.
-"runtime! debian.vim
-"
-"" Uncomment the next line to make Vim more Vi-compatible
-"" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-"" options, so any other options should be set AFTER setting 'compatible'.
-""set compatible
-"
-"" Vim5 and later versions support syntax highlighting. Uncommenting the next
-"" line enables syntax highlighting by default.
-"if has("syntax")
-"  syntax on
-"endif
-"
-"" If using a dark background within the editing area and syntax highlighting
-"" turn on this option as well
-""set background=dark
-"
-"" Uncomment the following to have Vim jump to the last position when
-"" reopening a file
-""if has("autocmd")
-""  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-""endif
-"
-"" Uncomment the following to have Vim load indentation rules and plugins
-"" according to the detected filetype.
-""if has("autocmd")
-""  filetype plugin indent on
-""endif
-"
-"" The following are commented out as they cause vim to behave a lot
-"" differently from regular Vi. They are highly recommended though.
-""set showcmd		" Show (partial) command in status line.
-""set showmatch		" Show matching brackets.
-""set ignorecase		" Do case insensitive matching
-""set smartcase		" Do smart case matching
-""set incsearch		" Incremental search
-""set autowrite		" Automatically save before commands like :next and :make
-""set hidden		" Hide buffers when they are abandoned
-""set mouse=a		" Enable mouse usage (all modes)
-"
-"" Source a global configuration file if available
-"if filereadable("/etc/vim/vimrc.local")
-"  source /etc/vim/vimrc.local
-"endif
-"
-"colorscheme desert
-"set tabstop=4
-"set softtabstop=4
-"set shiftwidth	=4
-""set guifont=Consolas:h15
-"set nu!
-"set ai
-"set guifont=Consolas:h15:cANSI   " 设置字体  
-"
-""==========================================BELOW IS NOT MY OWN CONFIG +============================================
-"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" 显示相关  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -320,55 +228,7 @@ func! SetTitle()
 endfunc 
 "新建文件后，自动定位到文件末尾
 autocmd BufNewFile * normal G
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""键盘命令
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"nmap <leader>w :w!<cr>
-"nmap <leader>f :find<cr>
-"
-"" 映射全选+复制 ctrl+a
-""map <C-A> ggVGY
-""map! <C-A> <Esc>ggVGY
-""map <F12> gg=G
-"" 选中状态下 Ctrl+c 复制
-"vmap <C-c> "+y
-""去空行  
-"nnoremap <F2> :g/^\s*$/d<CR> 
-""比较文件  
-"nnoremap <C-F2> :vert diffsplit 
-""新建标签  
-"map <F4> :tabnew<CR>
-"map <C-n> :tabNext<CR>
-""map <M-F2> :tabnew<CR>  
-""列出当前目录文件  
-"map <F3> :tabnew .<CR>  
-""打开树状文件目录  
-"map <C-F3> \be  
-""C，C++ 按F5编译运行
-"map <F5> :call CompileRunGcc()<CR>
-"func! CompileRunGcc()
-"    exec "w"
-"    if &filetype == 'c'
-"        exec "!g++ % -o %<"
-"        exec "! ./%<"
-"    elseif &filetype == 'cpp'
-"        exec "!g++ % -o %<"
-"        exec "! ./%<"
-"    elseif &filetype == 'java' 
-"        exec "!javac %" 
-"        exec "!java %<"
-"    elseif &filetype == 'sh'
-"        :!./%
-"    endif
-"endfunc
-""C,C++的调试
-"map <F8> :call Rungdb()<CR>
-"func! Rungdb()
-"    exec "w"
-"    exec "!g++ % -g -o %<"
-"    exec "!gdb ./%<"
-"endfunc
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """实用设置
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -516,57 +376,7 @@ set iskeyword+=_,$,@,%,#,-
 ""let Tlist_Show_One_File=1            "不同时显示多个文件的tag，只显示当前文件的
 ""设置tags  
 set tags=tags;/
-""set autochdir 
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""其他东东
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""默认打开Taglist 
-"let Tlist_Auto_Open=1 
-""""""""""""""""""""""""""""""" 
-"" Tag list (ctags) 
-""""""""""""""""""""""""""""""""" 
-"let Tlist_Ctags_Cmd = '/usr/bin/ctags' 
-"let Tlist_Show_One_File = 1 "不同时显示多个文件的tag，只显示当前文件的 
-"let Tlist_Exit_OnlyWindow = 1 "如果taglist窗口是最后一个窗口，则退出vim 
-"let Tlist_Use_Right_Window = 1 "在右侧窗口中显示taglist窗口
-"" minibufexpl插件的一般设置
-"let g:miniBufExplMapWindowNavVim = 1
-"let g:miniBufExplMapWindowNavArrows = 1
-"let g:miniBufExplMapCTabSwitchBufs = 1
-"
-"let g:miniBufExplModSelTarget = 1  
-"
-"
-"
-""VOID's Own Conf'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-""call pathogen#infect()
-"
-"
-"""powerline{
-""set guifont=PowerlineSymbols\ for\ Powerline
-""set nocompatible
-""set t_Co=256
-""let g:Powerline_symbols = 'fancy'
-"""}
-"
-"
-"""taglist{
-""let Tlist_Show_One_File = 1
-"""只显示当前文件的taglist，默认是显示多个
-""let Tlist_Exit_OnlyWindow = 1
-"""如果taglist是最后一个窗口，则退出vim
-""let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist
-""let Tlist_GainFocus_On_ToggleOpen = 1
-"""打开taglist时，光标保留在taglist窗口
-""let Tlist_Ctags_Cmd='/usr/bin/ctags'
-"""设置ctags命令的位置
-""nnoremap <leader>tl : Tlist<CR>
-"""设置关闭和打开taglist窗口的快捷键
-"""}
-"set sessionoptions-=options
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "High Light Tabs
 let g:HighLightTabsInCodeStatus=0
 function! HighLightTabsInCode()
@@ -581,6 +391,7 @@ function! HighLightTabsInCode()
     endif
 endfunction
 nmap <leader>ta : call HighLightTabsInCode()<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:WineRelayModeStat=0
 function! WineRelayMode()
@@ -597,9 +408,6 @@ function! WineRelayMode()
 	endif
 endfunction
 
-"set clipboard+=unnamed
-
-"Goyo configuration
 nmap gy :Goyo<CR>
 
 source ~/.vim/denite.vim
@@ -609,6 +417,3 @@ source ~/.vim/gtags.vim
 source ~/.vim/vim-wiki.vim
 source ~/.vim/ale.vim
 source ~/.vim/clang-format.vim
-" source ~/.vim/racer.vim
-" autocmd BufNewFile *.cc,*.h exec ':source ~/.vim/indent.vim'
-" source ~/.vim/indent.vim
