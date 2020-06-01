@@ -1,0 +1,7 @@
+# Ignore the project build files
+Makefile
+README.md
+# VCS files
+.git
+# Vim plugin files
+bundle/*
