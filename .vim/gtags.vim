@@ -8,7 +8,6 @@ nmap <F7> :GtagsCursor<CR>
 nmap <F8> :Gozilla<CR>
 nmap <C-j> :cn<CR>
 nmap <C-k> :cp<CR>
-unmap <C-]>]
 nmap <C-]>] :GtagsCursor<CR>
 let g:Gtags_OpenQuickfixWindow = 1
 
