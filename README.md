@@ -4,8 +4,9 @@ VOID-vimrc
 ## Requirement
 
 * Vim (Of course! This is a vim repo)
-* GNU Stow
+* curl
 * GNU Makefile
+* GNU Stow
 
 ## Installation
 

@@ -16,9 +16,6 @@ install:  ~/.vim/autoload/plug.vim
 uninstall:
 	- @stow -D --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER)
 
-install-deps: ~/.vim/autoload/plug.vim
-	- 
-
 ~/.vim/autoload/plug.vim:
 	- mkdir -p ~/.vim/autoload
 	- @curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

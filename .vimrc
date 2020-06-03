@@ -20,7 +20,10 @@ syntax on
 filetype plugin indent on
 
 call plug#begin('~/.vim/bundle')
+
 Plug 'scrooloose/nerdtree'                                     " File Tree Support
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 Plug 'jiangmiao/auto-pairs'                                    " Insert or delete brackets, parens, quotes in pair
 Plug 'majutsushi/tagbar'                                       " Tagbar
@@ -40,6 +43,7 @@ Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'VOID001/graph-easy-vim'
 Plug 'godlygeek/tabular'                                       " Align your data as you wish
 Plug 'vim/killersheep'                                         " Vim game for demoing the new feature > <
+
 call plug#end()
 
 syntax on
@@ -67,7 +71,7 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936
 set fileencoding=utf-8
 set nobackup                                                   " Do not create .swp file for each file opened
-set dir = "~/.cache/vim/swap"                                  " Create swap file in a separate directory
+set directory = "~/.cache/vim/swap"                            " Create swap file in a separate directory
 set expandtab
 set noshowmode
 set encoding=utf8
@@ -75,7 +79,6 @@ set encoding=utf8
 " auto-pairs Configurations
 let g:AutoPairs = { '{':'}' }
 let g:AutoPairsMultilineClose = 0
-
                                                                " taglist Configuration
 let Tlist_Sort_Type = "name"                                   " 按照名称排序
 let Tlist_Use_Right_Window = 1                                 " 在右侧显示窗口
@@ -84,7 +87,7 @@ let Tlist_Exist_OnlyWindow = 1                                 " 如果只有一
 let Tlist_File_Fold_Auto_Close = 0                             " 不要关闭其他文件的tags
 let Tlist_Enable_Fold_Column = 0                               " 不要显示折叠树
 
-                                                               " Vim-go Configuration
+" Vim-go Configuration
 let g:go_bin_path = "/home/" . $USER . "/GOPATH/bin"
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>s <Plug>(go-implements)
