@@ -8,7 +8,7 @@ PACKAGE = $(lastword $(subst /, , $(PWD)))
 simulation:
 	- @stow --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER) -n -v
 
-install:  ~/.vim/bundle/Vundle.vim
+install:  ~/.vim/autoload/plug.vim
 	- @echo "WARNING! This operation will install the configuration files into your filesystem, really proceeding ? (Ctrl-C to abort, Other keys to proceed)"
 	- @read
 	- @stow --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER)
@@ -16,6 +16,10 @@ install:  ~/.vim/bundle/Vundle.vim
 uninstall:
 	- @stow -D --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER)
 
-install-deps:
+install-deps: ~/.vim/autoload/plug.vim
+	- 
+
+~/.vim/autoload/plug.vim:
+	- mkdir -p ~/.vim/autoload
 	- @curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
