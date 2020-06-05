@@ -16,6 +16,7 @@ Basic requirement
 * curl
 * GNU Makefile
 * GNU Stow
+* python pynvim (install from pip or your favorite package manager)
 
 For completion support, you may need the following dependencies:
 
