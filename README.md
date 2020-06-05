@@ -15,7 +15,7 @@ VOID-vimrc
 
 Basic requirement
 * Python3 (Needed by various plugins)
-* Vim >=8.0 (Of course! This is a vim repo)
+* Vim >=8.0 with +python3 support (Of course! This is a vim repo)
 * curl (Used to download plug.vim)
 * GNU Makefile
 * GNU Stow
