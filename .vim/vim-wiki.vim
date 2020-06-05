@@ -1,3 +1,4 @@
+let g:vimwiki_user_root = "/home/void001/Documents/Notes"
 let g:vimwiki_list = [{
             \ 'path': '~/Documents/Notes/', 'index': 'index', 'ext': '.mw',
             \ 'auto_tags': 1,
@@ -5,20 +6,20 @@ let g:vimwiki_list = [{
             \ }]
 let g:vimwiki_folding = 'expr'
 nmap <Leader>tt <Plug>VimwikiToggleListItem
-" autocmd BufWritePost ~/Documents/Notes/*.mw !bash -c "git add . && git ci -S -s -m "
 
 function! SaveAndUpdate()
     let cwd = getcwd()
     let fname = expand('%:t')
-    echo cwd
-    exe 'cd /home/void001/Documents/Notes'
-    echo "Updating your Notes repository ..."
+    silent exe 'cd ' . g:vimwiki_user_root
+    echohl StatusLineTermNC | echom "Updating your Notes repository ..."
     silent exe '!git add .'
     silent exe '!git commit -s -m "' 'Update file(s): '. fname . '">/dev/null'
     silent exe '!git push >/dev/null 2>/dev/null'
-    echo "Done!"
-    exe 'cd' cwd
-    " exe '!cd ~/Documents/Notes/; git add . && git commit -S -s -m "' 'Update file(s): '.expand('%:t'). '" && git push '
+    echohl StatusLineTermNC | echom "Done!"
+    echohl None
+    silent exe 'cd' cwd
 endfunction
 
-autocmd BufWritePost ~/Documents/Notes/*.mw call SaveAndUpdate()
+" TODO: Maybe we need finer granularity e.g /home/void001/Documents/Notes/*.mw
+" But currently I don't know how to pass the g:vimwiki_user_root argument to autocmd
+autocmd BufWritePost *.mw call SaveAndUpdate()
