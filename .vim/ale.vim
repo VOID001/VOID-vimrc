@@ -1,15 +1,16 @@
 let g:go_code_completion_enabled = 0 " Disable the completion for vim-go, we have ale
 let g:ale_linters = {
             \ 'cpp': ['ccls'],
-            \ 'rust': ['ra', 'cargo'],
-            \ 'go': ['golangserver'],
+            \ 'rust': ['analyzer', 'cargo'],
+            \ 'go': ['gopls'],
+            \ 'sh': ['shellcheck']
             \ }
 let g:ale_cpp_ccls_init_options = {
             \   'cache': {
             \       'directory': '/tmp/ccls/cache',
             \   },
             \ }
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 
 autocmd FileType * :call CheckIfToggleALEShortCut()
 
@@ -25,6 +26,12 @@ function! SmartTab()
     if !col || getline('.')[col - 1] == ' '
         return "\<TAB>"
     else
-        return "\<C-x>\<C-o>"
+        return deoplete#complete()
     endif
 endfunction
+
+" NOTE: You need to have the following dependencies for language completion
+" support:
+" c/cpp: ccls
+" rust: rust-analyzer
+" go: gopls

@@ -21,20 +21,30 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/bundle')
 
+Plug 'WolfgangMehner/bash-support'
 Plug 'scrooloose/nerdtree'                                     " File Tree Support
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
 
 Plug 'jiangmiao/auto-pairs'                                    " Insert or delete brackets, parens, quotes in pair
 Plug 'majutsushi/tagbar'                                       " Tagbar
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go' , {'for': ['go']}
 
-Plug 'Shougo/denite.nvim'
 Plug 'Firef0x/PKGBUILD.vim'
 Plug 'vim-scripts/gtags.vim' , {'for': ['c', 'cpp']}
 Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
-Plug 'w0rp/ale', {'for': ['c', 'cpp', 'rust', 'python', 'go']} " Asynchornous Lint Engine
+Plug 'w0rp/ale', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go']} " Asynchornous Lint Engine
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 Plug 'rust-lang/rust.vim' , {'for': ['rust']}
 
 Plug 'python-mode/python-mode', {'for': 'python'}
@@ -42,8 +52,8 @@ Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'VOID001/graph-easy-vim'
 Plug 'godlygeek/tabular'                                       " Align your data as you wish
-Plug 'vim/killersheep'                                         " Vim game for demoing the new feature > <
 
+" Plug 'vim/killersheep'                                         " Vim game for demoing the new feature > <
 call plug#end()
 
 syntax on
@@ -119,8 +129,10 @@ function! LoadCustomConfig(config)
 endfunction
 command! -nargs=1 LoadConfig call LoadCustomConfig(<f-args>)
 
+
+" LoadConfig ~/.vim/denite.vim
+LoadConfig ~/.vim/deoplete.vim
 LoadConfig ~/.vim/airline.vim
-LoadConfig ~/.vim/denite.vim
 LoadConfig ~/.vim/vim-notes.vim
 LoadConfig ~/.vim/vim-latex.vim
 LoadConfig ~/.vim/gtags.vim
