@@ -32,7 +32,6 @@ For completion support, you may need the following dependencies:
 
 * For installation just need to follow the **installation** section
 * NOTE: in order to make vim-wiki works correctly, you need to change the variable `g:viwiki_user_root` in .vim/vim-wiki.vim
-
 * \\\\ for open the tree view
 * \\ww for open the vim-wiki index page
 * C-n for a new tab
