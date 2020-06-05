@@ -12,6 +12,7 @@ install:  ~/.vim/autoload/plug.vim
 	- @echo "WARNING! This operation will install the configuration files into your filesystem, really proceeding ? (Ctrl-C to abort, Other keys to proceed)"
 	- @read
 	- @stow --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER)
+	- @vim +"PlugInstall | echohl StatusLineTermNC | echom \"Plug install finished, enjoy your new vim configuration! (:wq to quit)\""
 
 uninstall:
 	- @stow -D --dir=$(shell pwd)/../ $(PACKAGE) --target=/home/$(USER)
