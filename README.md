@@ -27,6 +27,10 @@ For completion support, you may need the following dependencies:
 
 ## Installation
 
+* `mkdir -p $HOME/stow-root`
+* `cd $HOME/stow-root/`
+* `git clone https://github.com/VOID001/VOID-vimrc`
+* `cd VOID-vimrc`
 * Run `make simulation` to see what will happen if you run the installation
 * Run `make install` to install the config files into your home directory
 
