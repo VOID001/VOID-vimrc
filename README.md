@@ -1,6 +1,8 @@
 VOID-vimrc
 ====
 
+* **NOTE**: Due to compatibility issues on OS X, the config is not supported on OS X yet.
+
 ## Supported Features:
 * Easy multi-tab support + navigation
 * C/C++, Rust, Golang, Linter support + Navigation + Completion. Shellscript Linter Support
@@ -45,4 +47,4 @@ cd VOID-vimrc
 * C-n for a new tab
 * C-l for moving to the right tab
 * C-h for moving to the left tab
-* <Tab> in insert mode for completion (powered by ALE + Deoplete)
+* `<Tab>` in insert mode for completion (powered by ALE + Deoplete)
