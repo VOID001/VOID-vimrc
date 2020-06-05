@@ -5,3 +5,5 @@ README.md
 .git
 # Vim plugin files
 bundle/*
+.vim/autoload/plug.vim
+.gitignore
