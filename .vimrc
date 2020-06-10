@@ -21,11 +21,12 @@ filetype plugin indent on
 
 call plug#begin('~/.vim/bundle')
 
-Plug 'WolfgangMehner/bash-support'
+Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'WolfgangMehner/bash-support', {'for': ['sh']}
 Plug 'scrooloose/nerdtree'                                     " File Tree Support
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go']} " When using vimwiki, this plugin conflicts with it.
 
 Plug 'jiangmiao/auto-pairs'                                    " Insert or delete brackets, parens, quotes in pair
 Plug 'majutsushi/tagbar'                                       " Tagbar
@@ -38,20 +39,22 @@ Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 Plug 'w0rp/ale', {'for': ['sh', 'c', 'cpp', 'rust', 'python', 'go']} " Asynchornous Lint Engine
 
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim' , { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim' , { 'do': ':UpdateRemotePlugins' }
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 Plug 'rust-lang/rust.vim' , {'for': ['rust']}
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
+Plug 'junegunn/rainbow_parentheses.vim'
 
 Plug 'python-mode/python-mode', {'for': 'python'}
 Plug 'rhysd/vim-clang-format', {'for': 'cpp'}
 Plug 'davidhalter/jedi-vim', {'for': 'python'}
 Plug 'VOID001/graph-easy-vim'
-Plug 'godlygeek/tabular'                                       " Align your data as you wish
+" Plug 'godlygeek/tabular'                                       " Align your data as you wish
 
 " Plug 'vim/killersheep'                                         " Vim game for demoing the new feature > <
 call plug#end()
@@ -74,7 +77,6 @@ set autoindent
 set smartindent
 set backspace=2
 
-                                                               "Set encoding
 set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
@@ -85,6 +87,7 @@ set directory = "~/.cache/vim/swap"                            " Create swap fil
 set expandtab
 set noshowmode
 set encoding=utf8
+colorscheme dracula
 
 " auto-pairs Configurations
 let g:AutoPairs = { '{':'}' }
@@ -141,3 +144,4 @@ LoadConfig ~/.vim/ale.vim
 LoadConfig ~/.vim/clang-format.vim
 " The following config file doesn't exist now
 LoadConfig ~/.vim/vim-go.vim
+LoadConfig ~/.vim/vim-cpp-enhanced-hightlight.vim

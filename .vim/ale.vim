@@ -1,4 +1,6 @@
 let g:go_code_completion_enabled = 0 " Disable the completion for vim-go, we have ale
+" let g:ale_go_gopls_options = '-debug -logfile /tmp/gopls.log'
+let g:ale_go_gopls_executable = 'gopls'
 let g:ale_linters = {
             \ 'cpp': ['ccls'],
             \ 'rust': ['analyzer', 'cargo'],
